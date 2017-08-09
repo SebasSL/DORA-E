@@ -57,8 +57,8 @@
                         </div>
                         <div class="col-sm-5 text-right dl-share">
                             <!-- AddToAny BEGIN -->
-                            <a class="a2a_dd btn btn-default" href="roverC.html"><span class="fa fa-home "></span> Share</a>
-                            
+                            <a class="a2a_dd btn btn-default" href=""><span class="fa fa-home "></span> Share</a>
+                            <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
                             <!-- AddToAny END -->
                         </div>
                     </div>
@@ -78,12 +78,41 @@
                     <span class="secicon fa fa-user"></span>
                 </div><!--icon end-->
 
-                <div class="col-sm-11">
-                    <h3>Justificación del Proyecto </h3>
-                    <p align="justify">A pesar de los avances mundiales en el área de vehículos no tripulados, a nivel local aún nos encontramos en las primeras etapas de desarrollo en este sector. Si a esto sumamos el creciente interés tanto académico como comercial por este tipo de sistemas, se justifica realizar proyectos como el propuesto donde se busca establecer las bases de conocimiento y experiencia en el área, así como la construcción de plataformas hardware que sirvan para el desarrollo de aplicaciones más avanzadas y ajustadas a nuestro medio.</p>
-
-                    <p class="signature">SebastianSalasLaurens</p>
+                <div class="col-sm-2">
+                    <h3>Controles del Rover </h3>
                 </div><!--info end-->
+                <div class="col-xs-1">
+                	
+                </div>
+                <form action="<?php $_PHP_SELF ?>" method="post">
+                <div class="col-xs-2">
+                	<br> <br>
+                	<center>
+                	<button type="input" value="1" id="action" name="action">left</button>
+                	</center>
+                </div>
+                <div class="col-xs-2">	
+                <center>
+                	<button type="input" value="2" id="action" name="action">go</button> <br> <br>
+                	<button type="input" value="5" id="action" name="action">stop</button> <br> <br>
+                	<button type="input" value="3" id="action" name="action">back</button> <br> <br>
+                </center>
+                </div>
+                <div class="col-xs-2">
+                	<br> <br>
+                	<center>
+                	<button type="input" value="4" id="action" name="action">right</button>
+                	</center>
+                </div>
+                </form>
+                <?php
+                    $connect = mysqli_connect('localhost','root','Pitico123','DORA-E');
+
+                    $Direc = $_POST["action"];
+                    $sql= "UPDATE `movements` SET `direction`='".$Direc."' WHERE `ID`=1";
+                    $result = mysqli_query($connect, $sql);
+                ?>
+
             </div><!--personal statement end-->            
         </div><!--left end-->
         
@@ -95,10 +124,8 @@
                 <div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-magic"></span>
                 </div><!--icon end-->
-                    <h3> Integrantes: </h3>
-                    <center>
-                    <p > Catherine Diaz Umaña <br> Sebastian Salas Laurens </p>
-                    </center>
+                    <h3> Controles: </h3>
+                    <button>meh</button>
                 </div><!--tech skills end-->
         </div><!--right end-->
     </div><!--container end-->
