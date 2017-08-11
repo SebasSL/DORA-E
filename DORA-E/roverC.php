@@ -53,12 +53,11 @@
                 <div class="cv-title">
                     <div class="row">
                         <div class="col-sm-7">
-                            <h1>Welcome to DORA-E... Ya bitch!</h1>
+                            <h1>Welcome to DORA-E</h1>
                         </div>
                         <div class="col-sm-5 text-right dl-share">
                             <!-- AddToAny BEGIN -->
-                            <a class="a2a_dd btn btn-default" href=""><span class="fa fa-home "></span> Share</a>
-                            <script type="text/javascript" src="//static.addtoany.com/menu/page.js"></script>
+                            <a class="a2a_dd btn btn-default" href="index.html"><span class="fa fa-home "></span> Home</a>
                             <!-- AddToAny END -->
                         </div>
                     </div>
