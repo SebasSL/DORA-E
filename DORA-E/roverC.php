@@ -83,35 +83,34 @@
                 <div class="col-xs-1">
                 	
                 </div>
-                <form action="<?php $_PHP_SELF ?>" method="post">
                 <div class="col-xs-2">
                 	<br> <br>
                 	<center>
-                	<button type="input" value="1" id="action" name="action">left</button>
+                	<button type="input" value="1" id="action" name="action" onclick="pushdirec()">left</button>
                 	</center>
                 </div>
                 <div class="col-xs-2">	
                 <center>
-                	<button type="input" value="2" id="action" name="action">go</button> <br> <br>
-                	<button type="input" value="5" id="action" name="action">stop</button> <br> <br>
-                	<button type="input" value="3" id="action" name="action">back</button> <br> <br>
+                	<button type="input" value="2" id="action" name="action" onclick="pushdirec()">go</button> <br> <br>
+                	<button type="input" value="5" id="action" name="action" onclick="pushdirec()">stop</button> <br> <br>
+                	<button type="input" value="3" id="action" name="action" onclick="pushdirec()">back</button> <br> <br>
                 </center>
                 </div>
                 <div class="col-xs-2">
                 	<br> <br>
                 	<center>
-                	<button type="input" value="4" id="action" name="action">right</button>
+                	<button type="input" value="4" id="action" name="action" onclick="pushdirec()">right</button>
                 	</center>
                 </div>
-                </form>
+                <!--
                 <?php
-                    $connect = mysqli_connect('localhost','root','Pitico123','DORA-E');
+                    $connect = mysqli_connect('localhost','root','','DORA-E');
 
                     $Direc = $_POST["action"];
                     $sql= "UPDATE `movements` SET `direction`='".$Direc."' WHERE `ID`=1";
                     $result = mysqli_query($connect, $sql);
                 ?>
-
+                -->
             </div><!--personal statement end-->            
         </div><!--left end-->
         
@@ -123,8 +122,8 @@
                 <div class="col-sm-1 col-md-2 mobmid">
                     <span class="secicon fa fa-magic"></span>
                 </div><!--icon end-->
-                    <h3> Controles: </h3>
-                    <button>meh</button>
+                    <h3> Sensores: </h3> <br> <br>
+                    <p>Valor sensor delantero: <span id="sensor1">0</span></p>
                 </div><!--tech skills end-->
         </div><!--right end-->
     </div><!--container end-->
@@ -136,6 +135,51 @@
         <p>&copy; Proyecto realizado en barranquilla, Universidad del Norte
         </p>
     </footer>
+
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.js">
+        
+        function auto_load(sensor) {
+        $.ajax({
+          url: "refresh.php",
+          method: "POST",
+          data: {
+            sensor: sensor
+          },
+          cache: false,
+          success: function(data) {
+            var putthis = data;
+
+            document.getElementById(sensor).innerHTML = putthis;
+          }
+        });     
+
+        function pushdirec() {
+        $.ajax({
+          url: "control.php",
+          method: "POST",
+          data: {
+            direc: document.getElementById("action").value
+          },
+          cache: false,
+          success: function(data) {
+            
+          }
+        }); 
+
+      function ShowSensors() {
+        auto_load("sensor1"); //Call auto_load() function when DOM is Ready
+      }
+
+     $(document).ready(function() {
+        ShowSensors();
+        setInterval(function() {
+            ShowSensors();
+        }, 5000);
+        //Refresh auto_load() function after 10000 milliseconds
+      });
+
+
+    </script>
 
     <!--necessary scripts and plugins-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
