@@ -8,8 +8,9 @@ function auto_load(sensor) {
       cache: false,
       success: function(data) {
         var putthis = data;
-
-        document.getElementById(sensor).innerHTML = putthis;
+        var width = " width: "+data.toString()+"%;";
+        //document.getElementById(sensor).aria-valuenow = putthis;
+        document.getElementById(sensor).style = width;
       }
     });     
 }
@@ -28,12 +29,15 @@ function auto_load(sensor) {
 }
   function ShowSensors() {
     auto_load("sensor1"); //Call auto_load() function when DOM is Ready
+    auto_load("sensor2");
+    auto_load("sensor3");
+    auto_load("sensor4");
   }
 
  $(document).ready(function() {
     ShowSensors();
     setInterval(function() {
         ShowSensors();
-    }, 5000);
+    }, 1000);
     //Refresh auto_load() function after 10000 milliseconds
   });

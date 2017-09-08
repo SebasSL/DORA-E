@@ -122,7 +122,7 @@ section {
 }
 
 #header {
- height: 98px; 
+	/* height: 98px; */
 }
 
 
@@ -153,7 +153,6 @@ section {
 .navbar-brand {
 	background-repeat: no-repeat;
 	background-position: left center;
-	background-size: 100% 100%;
 	width: 150px;
 	height: auto;
 	padding: 24px 0;
@@ -169,16 +168,16 @@ section {
 	transition: all 0.2s ease-in-out;
 }
 .navbar-default .navbar-brand {
-	background-image: url(../img/pingui.png);
+	background-image: url(../img/logo.png);
 }
 .navbar-shrink .navbar-brand {
-	background-image: url(../img/pingui.png);
+	background-image: url(../img/logo.png);
 }
 .navbar-transparent .navbar-brand {
-	background-image: url(../img/pingui.png);
+	background-image: url(../img/logo.png);
 }
 .navbar-inverse .navbar-brand {
-	background-image: url(../img/pingui.png);
+	background-image: url(../img/logo.png);
 }
 
 /* Navbar links */
