@@ -1,4 +1,4 @@
-function auto_load(sensor) {
+function auto_load(sensor,senid) {
     $.ajax({
       url: "refresh.php",
       method: "POST",
@@ -11,6 +11,7 @@ function auto_load(sensor) {
         var width = " width: "+data.toString()+"%;";
         //document.getElementById(sensor).aria-valuenow = putthis;
         document.getElementById(sensor).style = width;
+        document.getElementById(senid).innerHTML = data;
       }
     });     
 }
@@ -28,16 +29,16 @@ function auto_load(sensor) {
     }); 
 }
   function ShowSensors() {
-    auto_load("sensor1"); //Call auto_load() function when DOM is Ready
-    auto_load("sensor2");
-    auto_load("sensor3");
-    auto_load("sensor4");
+    auto_load("sensor1","sen1"); //Call auto_load() function when DOM is Ready
+    auto_load("sensor2","sen2");
+    auto_load("sensor3","sen3");
+    auto_load("sensor4","sen4");
   }
 
  $(document).ready(function() {
     ShowSensors();
     setInterval(function() {
         ShowSensors();
-    }, 200);
+    }, 10);
     //Refresh auto_load() function after 10000 milliseconds
   });
