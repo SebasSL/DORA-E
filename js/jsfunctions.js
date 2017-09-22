@@ -39,6 +39,6 @@ function auto_load(sensor,senid) {
     ShowSensors();
     setInterval(function() {
         ShowSensors();
-    }, 10);
+    }, 500);
     //Refresh auto_load() function after 10000 milliseconds
   });
