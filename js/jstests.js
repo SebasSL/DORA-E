@@ -20,6 +20,6 @@ $(document).ready(function() {
     loadend();
     setInterval(function() {
         loadend();
-    }, 10);
+    }, 80);
     //Refresh auto_load() function after 10000 milliseconds
   });
