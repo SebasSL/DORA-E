@@ -54,11 +54,37 @@
 
         <style type="text/css">
             #header {
-             height: 98px; 
+             height: 35px; 
+            }
+
+            .bottom-buffer{
+                height: 1px;
+            }
+            .pad-left{
+                padding-left: 7.7em 
+            }
+            #map-manual{
+                height: 350px;
+                width: 100%;
+                background-color: black;
+            }
+            #map-auton{
+                height: 350px;
+                width: 100%;
+                background-color: black;   
+            }
+            #owl-control {
+                width: 100%;
+            }
+            .text-minus-left {
+                margin-right: 2px;
             }
              
         </style>
-    
+            
+           
+            
+           
 	</head>
 
     <body data-spy="scroll" data-target="#main-navbar">
@@ -88,7 +114,7 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav navbar-right">
                             <li><a class="page-scroll" href="index.html">Home</a></li>
-                            <li><a class="page-scroll" href="#control-section">Control</a></li>                            
+                            <li><a class="page-scroll" href="#control-section">Control</a></li>                        
                             <li><a class="page-scroll" href="#contact-section">Contact</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -103,152 +129,281 @@
                 
             <!-- Begin Control section -->
 			<section id="control-section" class="page bg-style1">
-                <!-- Begin page header-->
-                <div class="page-header-wrapper">
-                    <div class="container">
-                        <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-                            <h2>Rover Control</h2>
-                            <div class="devider"></div>
-                            <p class="subtitle">Panel for control of the rover</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End page header-->
-
-                <!-- Begin rotate box-1 -->
-                <div class="rotate-box-1-wrapper">
-                    <div class="container">
-                    <!--Begin headers panels-->
-                        <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-                                    <h4>Rover direction control</h4>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
-                                    <h4>Sensor values</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-1 col-sm-1">
-                                <center>
-                                    <br> <br> <br> <br> <br>  
-                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(1)">
-                                        <span class="rotate-box-icon"><i class="fa fa-arrow-left"></i></span>
-                                    </a>
-                                </center>
-                            </div>
-                            <div class="col-md-1 col-sm-1">
-                                <center>
-                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(2)">
-                                        <span class="rotate-box-icon"><i class="fa fa-arrow-up"></i></span>
-                                    </a>
-                                    
-                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(3)">
-                                        <span class="rotate-box-icon"><i class="fa fa-arrow-down"></i></span>
-                                    </a>
-                                </center>
-                            </div>
-                            <div class="col-md-1 col-sm-1">
-                                <center>
-                                    <br> <br> <br> <br> <br>
-                                    <a  class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(4)">
-                                        <span class="rotate-box-icon"><i class="fa fa-arrow-right"></i></span>
-                                    </a>
-                                </center>
-                            </div>
-                            <div class="col-md-3 col-sm-3">
-                                <center>
-                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(6)">
-                                        <span class="rotate-box-icon"><i class="fa fa-reply"></i></span>
-                                    </a>
-                                    
-                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(5)">
-                                        <span class="rotate-box-icon"><i class="fa fa-stop"></i></span>
-                                    </a>
-                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(7)">
-                                        <span class="rotate-box-icon"><i class="fa fa-share"></i></span>
-                                    </a>
-                                </center>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <center>
-                                    <div class="skill-bar wow slideInLeft" data-wow-delay="0.2s">
-                                        <div class="progress-lebel">
-                                            <h6>Sensor 1: <span = id="sen1"></span></h6>
-                                        </div>
-                                        <div class="progress">
-                                          <div id="sensor1" class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%; ">
-                                          </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-bar wow slideInLeft" data-wow-delay="0.3s">
-                                        <div class="progress-lebel">
-                                            <h6>Sensor 2: <span = id="sen2"></span></h6>
-                                        </div>
-                                        <div class="progress">
-                                          <div id="sensor2" class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-                                          </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-bar wow slideInLeft" data-wow-delay="0.4s">
-                                        <div class="progress-lebel">
-                                            <h6>Sensor 3: <span = id="sen3"></span></h6>
-                                        </div>
-                                        <div class="progress">
-                                          <div id="sensor3" class="progress-bar" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100" style="width: 7%;">
-                                          </div>
-                                        </div>
-                                    </div>
-                                    <div class="skill-bar wow slideInLeft" data-wow-delay="0.5s">
-                                        <div class="progress-lebel">
-                                            <h6>Sensor 4: <span = id="sen4"></span></h6>
-                                        </div>
-                                        <div class="progress">
-                                          <div id="sensor4" class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                                          </div>
-                                        </div>
-                                    </div>
-                                </center>
-                            </div>
-                        </div> <!-- /.row -->
-                    </div> <!-- /.container -->
-                </div>
-                <!-- End rotate box-1 -->
-          </section>
-          <!-- End about section -->
-  
-            <!-- Begin social section -->
-			<section id="social-section">
-            
-                 <!-- Begin page header-->
-                <div class="page-header-wrapper">
-                    <div class="container">
-                        <div class="page-header text-center wow fadeInDown" data-wow-delay="0.4s">
-                            <h2>Join Us</h2>
-                            <div class="devider"></div>
-                            <p class="subtitle">Follow us on social networks</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- End page header-->
-                
                 <div class="container">
-                	<ul class="social-list">
-                		<li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.3s"><span class="rotate-box-icon"><i class="fa fa-facebook"></i></span></a></li>
-                		<li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.4s"><span class="rotate-box-icon"><i class="fa fa-twitter"></i></span></a></li>
-                		<li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.5s"><span class="rotate-box-icon"><i class="fa fa-google-plus"></i></span></a></li>
-                		<li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.6s"><span class="rotate-box-icon"><i class="fa fa-pinterest-p"></i></span></a></li>
-                		<li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.7s"><span class="rotate-box-icon"><i class="fa fa-tumblr"></i></span></a></li>
-                		<li> <a href="#" class="rotate-box-1 square-icon text-center wow zoomIn" data-wow-delay="0.8s"><span class="rotate-box-icon"><i class="fa fa-dribbble"></i></span></a></li>                      
-                    </ul>
+                    <div id="owl-testimonial">
+                        <div class="item" >
+                        <section id="manual-section">
+                            <!-- Begin page header-->
+                            <div class="page-header-wrapper">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
+                                                <h2>Rover Control</h2>
+                                                <div class="devider"></div>
+                                                <p class="subtitle">Manual module of the rover</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="col-sm-10">
+                                            <div class="contact-form">
+                                                <h4>Input Coordenate</h4> 
+    
+                                                <input type="text" class="form-control input-lg text-minus-left" placeholder="Latitude" id="Latitude" required>
+                                                <br>
+                                                <input type="text" class="form-control input-lg text-minus-left" placeholder="longitude" id="Longitude" required>
+                                            </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <br> <br> <br> <br> 
+                                                <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s" onclick="pushdesti(1)">Submit <br> Coordenate</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <div class="col-sm-12">
+                                                <h5>Mode:</h5>
+                                                <br> 
+                                                <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s" id="auto" onclick="pushmode(1)">Autonomous</button>
+                                                <br> <br>
+                                                <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s" id="manual" onclick="pushmode(0)">Manual</button>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End page header-->
+
+                            <!-- Begin rotate box-1 -->
+                            <div class="rotate-box-1-wrapper">
+                                <div class="container">
+                                <!--Begin headers panels-->
+                                    <div class="row">
+                                        <div class="col-sm-4 ">
+                                            <div class="row">
+                                                <div class="col-sm-11">
+                                                    <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s"> 
+                                                        <h4 class="bottom-buffer">Rover direction control</h4>
+                                                
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-11 col-sm-offset-1">
+                                                    
+                                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(6)">
+                                                        <span class="rotate-box-icon"><i class="fa fa-reply"></i></span>
+                                                    </a>
+
+                                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(2)">
+                                                        <span class="rotate-box-icon"><i class="fa fa-arrow-up"></i></span>
+                                                    </a>
+                                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(7)">
+                                                        <span class="rotate-box-icon"><i class="fa fa-share"></i></span>
+                                                    </a>
+                                                    
+                                                </div>
+                                                <div class="col-sm-11 col-sm-offset-1">
+                                                
+                                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(1)">
+                                                        <span class="rotate-box-icon"><i class="fa fa-arrow-left"></i></span>
+                                                    </a>
+
+                                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(5)">
+                                                        <span class="rotate-box-icon"><i class="fa fa-stop"></i></span>
+                                                    </a>
+
+                                                    <a class="rotate-box-1 square-icon wow zoomIn" data-wow-delay="1s" onclick="pushdirec(4)">
+                                                        <span class="rotate-box-icon"><i class="fa fa-arrow-right"></i></span>
+                                                    </a>
+                                                
+                                                </div>
+                                                <div class="col-sm-11 col-sm-offset-1">
+
+                                                    <a class="rotate-box-1 square-icon wow zoomIn pad-left" data-wow-delay="1s" onclick="pushdirec(3)">
+                                                        <span class="rotate-box-icon"><i class="fa fa-arrow-down"></i></span>
+                                                    </a>
+                                                    
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-sm-8">
+                                            <div class="page-header text-center wow fadeInUp" data-wow-delay="0.5s">
+                                                <h4 class="bottom-buffer">Sensor values</h4>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-7">
+                                                    <div id="map-manual" class="wow slideInLeft" data-wow-delay="0.9"></div>
+                                                    <div class="col-sm-6">
+                                                        <br>
+                                                        <div class="text-center wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Latitude: <span id="latitude"></span></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <br>
+                                                        <div class="text-center wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Longitude: <span id="longitude"></span></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-4">
+                                                    <center>
+                                                        <div class="skill-bar wow slideInLeft" data-wow-delay="0.1s">
+                                                            <div class="progress-lebel">
+                                                                <h5>Sensor 1: <span = id="sen1"></span></h5>
+                                                            </div>
+                                                            <div class="progress">
+                                                              <div id="sensor1" class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%; ">
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="skill-bar wow slideInLeft" data-wow-delay="0.15s">
+                                                            <div class="progress-lebel">
+                                                                <h5>Sensor 2: <span = id="sen2"></span></h5>
+                                                            </div>
+                                                            <div class="progress">
+                                                              <div id="sensor2" class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="skill-bar wow slideInLeft" data-wow-delay="0.2s">
+                                                            <div class="progress-lebel">
+                                                                <h5>Sensor 3: <span = id="sen3"></span></h5>
+                                                            </div>
+                                                            <div class="progress">
+                                                              <div id="sensor3" class="progress-bar" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100" style="width: 7%;">
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Speed: <span id="Speed"></span></h5>
+                                                        </div>
+                                                        <div class="wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Height: <span id="Height"></span></h5>
+                                                        </div>                                                
+                                                        <div class="wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Heading: <span id="heading"></span></h5    >
+                                                        </div>
+                                                    </center>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <!-- /.container -->
+                            </div>
+                            <!-- End rotate box-1 -->
+                        </section>
+                        </div>
+                        <div class="item" id="auton-section">
+                            <div class="page-header-wrapper">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="page-header text-center wow fadeInUp" data-wow-delay="0.3s">
+                                                <h2>Rover Control</h2>
+                                                <div class="devider"></div>
+                                                <p class="subtitle">Autonomus module of the rover</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="col-sm-10">
+                                            <div class="contact-form">
+                                                <h4>Input Coordenate</h4> 
+    
+                                                <input type="text" class="form-control input-lg text-minus-left" placeholder="Latitude" id="Latitude-a" required>
+                                                <br>
+                                                <input type="text" class="form-control input-lg text-minus-left" placeholder="longitude" id="Longitude-a" required>
+                                            </div>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <br> <br> <br> <br> 
+                                                <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s" onclick="pushdesti(2)">Submit <br> Coordenate</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-1">
+                                            <div class="col-sm-12">
+                                                <h5>Mode:</h5>
+                                                <br> 
+                                                <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s" id="auto-a" onclick="pushmode(1)">Automatico</button>
+                                                <br><br> 
+                                                <button type="submit" class="btn wow bounceInRight" data-wow-delay="0.8s" id="manual-a" onclick="pushmode(0)">Manual</button>
+                                            </div>                                            
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>   
+                            <div class="container">
+                                <!--Begin headers panels-->
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="page-header text-center wow fadeInUp" data-wow-delay="0.5s">
+                                                <h4 class="bottom-buffer">Sensor values</h4>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <div id="map-auton" class="wow slideInLeft" data-wow-delay="0.9"></div>
+                                                    <div class="col-sm-6">
+                                                        <br>
+                                                        <div class="text-center wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Latitude: <span id="latitude-a"></span></h5>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <br>
+                                                        <div class="text-center wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Longitude: <span id="longitude-a"></span></h5>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <center>
+                                                        <div class="skill-bar wow slideInLeft" data-wow-delay="0.1s">
+                                                            <div class="progress-lebel">
+                                                                <h5>Sensor 1: <span = id="sen1-a"></span></h5>
+                                                            </div>
+                                                            <div class="progress">
+                                                              <div id="sensor1-a" class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100" style="width: 10%; ">
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="skill-bar wow slideInLeft" data-wow-delay="0.15s">
+                                                            <div class="progress-lebel">
+                                                                <h5>Sensor 2: <span = id="sen2-a"></span></h5>
+                                                            </div>
+                                                            <div class="progress">
+                                                              <div id="sensor2-a" class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="skill-bar wow slideInLeft" data-wow-delay="0.2s">
+                                                            <div class="progress-lebel">
+                                                                <h5>Sensor 3: <span = id="sen3-a"></span></h5>
+                                                            </div>
+                                                            <div class="progress">
+                                                              <div id="sensor3-a" class="progress-bar" role="progressbar" aria-valuenow="7" aria-valuemin="0" aria-valuemax="100" style="width: 7%;">
+                                                              </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Speed: <span id="Speed-a"></span></h5>
+                                                        </div>
+                                                        <div class="wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Height: <span id="Height-a"></span></h5>
+                                                        </div>                                                
+                                                        <div class="wow slideInLeft" data-wow-delay="0.4">
+                                                            <h5> Heading: <span id="heading-a"></span></h5    >
+                                                        </div>
+                                                    </center>
+                                                </div> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-            </section>
-            <!-- End social section -->
-                
+          </section>
+          <!-- End Control section -->
                 
                 
                 
@@ -319,7 +474,7 @@
             <footer class="text-off-white">
                 <div class="footer">
                     <div class="container text-center wow fadeIn" data-wow-delay="0.4s">
-                        <p class="copyright">Copyright &copy; 2017 - Designed By Sebastian Salas &amp; Developed by DORA E </p>
+                        <p class="copyright">Copyright &copy; 2017 - Designed By Catherine Diaz &amp; Sebastian Salas &amp; Developed by DORA E </p>
                     </div>
                 </div>
 
@@ -349,7 +504,84 @@
 		<!-- Theme JS -->
 		<script src="js/theme.js"></script>
         <script src="js/jsfunctions.js"></script>
-        <script src="js/jstests.js"></script>
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxB3lUicM5knbb9_mWe3i9BpS87mUQqr8&callback=initMap">
+        </script>
+        <!--<script src="js/jstests.js"></script>-->
+        <script type="text/javascript">
+            var marker_manual_destin;
+            var marker_manual_current;
+            var marker_auton_current;
+            var marker_auton_destin;
+            var map_manual;
+            var map_auton;
+
+            function initMap() {
+                var pos_manual = {lat: 11.020396, lng: -74.847995};
+                map_manual = new google.maps.Map(document.getElementById('map-manual'), {
+                  zoom: 17,
+                  center: pos_manual
+                });
+                map_auton = new google.maps.Map(document.getElementById('map-auton'), {
+                  zoom: 17,
+                  center: pos_manual
+                });
+                marker_manual_current = new google.maps.Marker({
+                  position: pos_manual,
+                  map: map_manual
+                });
+                marker_manual_destin = new google.maps.Marker({
+                  position: pos_manual,
+                  map: map_manual
+                });
+                marker_auton_current = new google.maps.Marker({
+                  position: pos_manual,
+                  map: map_auton
+                });
+                marker_auton_destin = new google.maps.Marker({
+                  position: pos_manual,
+                  map: map_auton
+                });
+        }
+
+        function refresh_map(){
+          $.ajax({
+              url: "map_refresh.php",
+              method: "POST",
+              data: { 
+              },
+              cache: false,
+              success: function(data) {
+                //console.log(data) 
+                //console.log(latitude,longitude)
+                var output = data.split(",");
+                var latid = parseFloat(output[0]);
+                var lngid = parseFloat(output[1]);
+                var latic = parseFloat(output[2]);
+                var lngic = parseFloat(output[3]);
+                console.log(latid,lngid,latic,lngic)
+                var current_pos = {lat: latic, lng: lngic};
+                var destin_pos = {lat: latid, lng: lngid};
+
+                marker_manual_current.setPosition(current_pos);
+                marker_manual_destin.setPosition(destin_pos);
+                marker_auton_current.setPosition(current_pos);
+                marker_auton_destin.setPosition(destin_pos);
+                map_manual.setCenter(marker_manual_current.getPosition());
+                map_auton.setCenter(marker_auton_current.getPosition());
+              }
+            });
+          
+
+        }
+        $(document).ready(function() {
+            
+            setInterval(function() {
+                refresh_map();
+            }, 500);
+            //Refresh auto_load() function after 10000 milliseconds
+        });
+        </script>
 
     </body> 
         
